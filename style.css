@@ -40,12 +40,40 @@ body {
     justify-content: center;
     align-items: center;
     
-    background-color: #f4f4f9; /* Optional background for better visuals */
+    background-color: #f4f4f9; /* Optional background color */
+    padding: 10px; /* Add padding to prevent content from touching screen edges */
+    box-sizing: border-box; /* Ensure padding is included in the width calculation */
 }
 
 iframe {
+    width: 100%; /* Make it take full width of the container */
+    max-width: 600px; /* Limit to original width or desired max width */
+    height: 100%; /* Maintain aspect ratio */
+    border-radius: 10px; /* Optional styling for rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow effect */
+}
+
+.responsive-iframe-container {
+    position: relative;
+    width: 100%; /* Full width of the container */
+    padding-top:371px; /* Aspect ratio (371/600 = 0.6183 or 61.83%) */
+    display: flex;
+    justify-content: center; /* Horizontally center the iframe */
+    align-items: center; /* Vertically center the iframe */
+    background-color: #f4f4f9; /* Optional background */
+}
+
+.responsive-iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width within the container */
+    height: 100%; /* Matches the height to maintain aspect ratio */
+    border: 1px solid #ccc; /* Optional border */
     border-radius: 10px; /* Optional styling */
 }
+
+
 
 
 .overview-item {
