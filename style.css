@@ -13,6 +13,7 @@ body {
     border-radius: 10px;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .login-container {
@@ -80,4 +81,9 @@ table, th, td {
 th, td {
     padding: 10px;
     text-align: left;
+}
+
+#loginMessage {
+    margin-top: 10px;
+    font-weight: bold;
 }

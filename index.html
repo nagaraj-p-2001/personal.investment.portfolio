@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="login-container">
-<h1>Welcome</h1>
+    <div class="login-container" style="position: absolute;">
+        <h1>Welcome</h1>
         <h2>Login</h2>
         <form id="loginForm">
             <label for="username">Username:</label>
@@ -20,28 +20,25 @@
             <button type="submit">Login</button>
         </form>
         <p id="loginMessage"></p>
-        
     </div>
 
-
-
     <script>
-        // Attach the event listener for form submission
+        // Combine login functionality
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault(); // Prevent form from submitting normally
-    
+
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
-    
+
             // Simple credentials check for demonstration
             if (username === "8" && password === "69") {
                 // Set the authentication flag in localStorage
                 localStorage.setItem('isLoggedIn', 'true');
-    
+
                 // Display success message and redirect
                 document.getElementById("loginMessage").textContent = "Login successful!";
                 document.getElementById("loginMessage").style.color = "green";
-    
+
                 setTimeout(() => {
                     window.location.href = "main.html"; // Redirect to the main page
                 }, 1000);
@@ -52,6 +49,5 @@
             }
         });
     </script>
-    
 </body>
 </html>
