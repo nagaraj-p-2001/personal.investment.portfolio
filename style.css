@@ -55,6 +55,7 @@ iframe {
 
 .responsive-iframe-container {
     position: relative;
+    max-width: 600px;
     width: 100%; /* Full width of the container */
     padding-top:371px; /* Aspect ratio (371/600 = 0.6183 or 61.83%) */
     display: flex;
