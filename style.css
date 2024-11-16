@@ -42,7 +42,7 @@ body {
     align-items: center;
     width: 100%; /* Full device width */
     height: 100vh; /* Full viewport height */
-    overflow: hidden; /* Prevent scrolling outside the iframe */
+    overflow: visible; /* Prevent scrolling outside the iframe */
 }
 
 .iframe-container iframe {
