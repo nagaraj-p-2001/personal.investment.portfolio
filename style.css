@@ -34,6 +34,15 @@ body {
 .investment-overview {
     margin-bottom: 30px;
 }
+iframe {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    background: none;
+    border: 0px;
+    display: block;
+   }
 
 iframe:focus {
     max-width: 600px;
