@@ -17,22 +17,22 @@
             <h2>Your Overall Investment Summary</h2>
             <div class="overview-item">
                 <h3>Total Stock Investments</h3>
-                <p id="totalStocks">$0</p>
+                <p id="totalStocks">₹0</p>
             </div>
             <div class="overview-item">
                 <h3>Total Mutual Fund Investments</h3>
-                <p id="totalMutualFunds">$0</p>
+                <p id="totalMutualFunds">₹0</p>
             </div>
             <div class="overview-item">
                 <h3>Total Gold Investments</h3>
-                <p id="totalGold">$0</p>
+                <p id="totalGold">₹0</p>
             </div>
             <div class="overview-item">
                 <h3>Total Cryptocurrency Investments</h3>
-                <p id="totalCrypto">$0</p>
+                <p id="totalCrypto">₹0</p>
             </div>
 
-            <h3>Overall Total Investment: $<span id="overallTotal">$0</span></h3>
+            <h3>Overall Total Investment: <span id="overallTotal">₹0</span></h3>
         </section>
 
         <section class="investment-section">
@@ -69,6 +69,11 @@
     </div>
 
     <script>
+        // Format number to INR currency
+        function formatCurrency(amount) {
+            return '₹' + parseFloat(amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        }
+
         // Simulate adding investments to the local storage for demonstration
         function addInvestment(category, amount) {
             let investments = JSON.parse(localStorage.getItem('investments')) || {
@@ -93,14 +98,14 @@
                 crypto: 0
             };
 
-            document.getElementById('totalStocks').textContent = "$" + investments.stocks.toFixed(2);
-            document.getElementById('totalMutualFunds').textContent = "$" + investments.mutualFunds.toFixed(2);
-            document.getElementById('totalGold').textContent = "$" + investments.gold.toFixed(2);
-            document.getElementById('totalCrypto').textContent = "$" + investments.crypto.toFixed(2);
+            document.getElementById('totalStocks').textContent = formatCurrency(investments.stocks);
+            document.getElementById('totalMutualFunds').textContent = formatCurrency(investments.mutualFunds);
+            document.getElementById('totalGold').textContent = formatCurrency(investments.gold);
+            document.getElementById('totalCrypto').textContent = formatCurrency(investments.crypto);
 
             // Calculate overall total investment
             let overallTotal = investments.stocks + investments.mutualFunds + investments.gold + investments.crypto;
-            document.getElementById('overallTotal').textContent = overallTotal.toFixed(2);
+            document.getElementById('overallTotal').textContent = formatCurrency(overallTotal);
         }
 
         // Logout function to clear the login status
