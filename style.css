@@ -37,21 +37,25 @@ body {
 
 
 .iframe-container {
-    position: relative;
-    width: 100%; /* Full width of the device */
-    padding-top: 61.83%; /* Aspect ratio (371/600 ≈ 0.6183) */
-    overflow: hidden; /* Prevent any overflow */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Full device width */
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevent scrolling outside the iframe */
 }
 
 .iframe-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%; /* Adjust to container width */
-    height: 100%; /* Adjust to container height */
-    border: 1px solid #ccc; /* Optional border */
+    transform: scale(0.8); /* Scale down to fit */
+    transform-origin: top left; /* Maintain scaling from top-left corner */
+    width: 1000px; /* Original width of iframe content */
+    height: 618px; /* Original height of iframe content */
+    max-width: 100%; /* Make responsive */
+    max-height: 100%; /* Make responsive */
     border-radius: 10px; /* Optional rounded corners */
+    border: 1px solid #ccc; /* Optional border */
 }
+
 
 
 
