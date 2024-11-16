@@ -31,6 +31,34 @@ body {
     margin-bottom: 20px;
 }
 
+.investment-overview {
+    margin-bottom: 30px;
+}
+
+.overview-item {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.overview-item h3 {
+    margin: 0;
+}
+
+.overview-item p {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+h3 {
+    margin-bottom: 10px;
+}
+
 form {
     display: flex;
     flex-direction: column;

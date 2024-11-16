@@ -3,90 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investment Manager</title>
-    <link rel="stylesheet" href="style.css"> <!-- Link to the CSS file -->
+    <title>Main Page - Investment Management</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script>
-        // Redirect to login page if not authenticated
-        if (localStorage.getItem('isLoggedIn') !== 'true') {
-            window.location.href = 'index.html';
-        }
-    </script>
-    <button onclick="logout()">Logout</button>
+    <div class="main-container">
+        <header>
+            <h1>Welcome to Your Investment Dashboard</h1>
+            <button onclick="logout()">Logout</button>
+        </header>
 
-    <script>
-        function logout() {
-            localStorage.removeItem('isLoggedIn');
-            window.location.href = 'index.html';
-        }
-    </script>
-    
+        <section class="investment-overview">
+            <h2>Your Overall Investment Summary</h2>
+            <div class="overview-item">
+                <h3>Total Stock Investments</h3>
+                <p id="totalStocks">$0</p>
+            </div>
+            <div class="overview-item">
+                <h3>Total Mutual Fund Investments</h3>
+                <p id="totalMutualFunds">$0</p>
+            </div>
+            <div class="overview-item">
+                <h3>Total Gold Investments</h3>
+                <p id="totalGold">$0</p>
+            </div>
+            <div class="overview-item">
+                <h3>Total Cryptocurrency Investments</h3>
+                <p id="totalCrypto">$0</p>
+            </div>
 
-    <div class="container">
-        <h1>Investment Manager</h1>
-        <form id="investmentForm">
-            <label for="stock">Stock Name:</label>
-            <input type="text" id="stock" name="stock" required>
+            <h3>Overall Total Investment: $<span id="overallTotal">$0</span></h3>
+        </section>
 
-            <label for="mutualFund">Mutual Fund Name:</label>
-            <input type="text" id="mutualFund" name="mutualFund" required>
+        <section class="investment-section">
+            <h2>Your Investment Categories</h2>
 
-            <label for="gold">Gold (grams):</label>
-            <input type="number" id="gold" name="gold" required>
+            <!-- Stock Management Section -->
+            <div class="investment-category">
+                <h3>Stocks</h3>
+                <p>Track your stock investments.</p>
+                <button onclick="addStock()">Add Stock Investment</button>
+            </div>
 
-            <label for="crypto">Cryptocurrency Name:</label>
-            <input type="text" id="crypto" name="crypto" required>
+            <!-- Mutual Fund Management Section -->
+            <div class="investment-category">
+                <h3>Mutual Funds</h3>
+                <p>Track your mutual fund investments.</p>
+                <button onclick="addMutualFund()">Add Mutual Fund Investment</button>
+            </div>
 
-            <button type="button" onclick="addData()">Add Investment</button>
-        </form>
+            <!-- Gold Management Section -->
+            <div class="investment-category">
+                <h3>Gold</h3>
+                <p>Track your gold investments.</p>
+                <button onclick="addGold()">Add Gold Investment</button>
+            </div>
 
-        <table id="investmentTable">
-            <thead>
-                <tr>
-                    <th>Stock</th>
-                    <th>Mutual Fund</th>
-                    <th>Gold (grams)</th>
-                    <th>Cryptocurrency</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Data will be displayed here -->
-            </tbody>
-        </table>
+            <!-- Cryptocurrency Management Section -->
+            <div class="investment-category">
+                <h3>Cryptocurrency</h3>
+                <p>Track your cryptocurrency investments.</p>
+                <button onclick="addCrypto()">Add Crypto Investment</button>
+            </div>
+        </section>
     </div>
 
     <script>
-        function addData() {
-            // Get input values
-            const stock = document.getElementById("stock").value;
-            const mutualFund = document.getElementById("mutualFund").value;
-            const gold = document.getElementById("gold").value;
-            const crypto = document.getElementById("crypto").value;
+        // Simulate adding investments to the local storage for demonstration
+        function addInvestment(category, amount) {
+            let investments = JSON.parse(localStorage.getItem('investments')) || {
+                stocks: 0,
+                mutualFunds: 0,
+                gold: 0,
+                crypto: 0
+            };
 
-            // Validate inputs
-            if (!stock || !mutualFund || !gold || !crypto) {
-                alert("Please fill in all fields.");
-                return;
+            investments[category] += parseFloat(amount);
+            localStorage.setItem('investments', JSON.stringify(investments));
+
+            updateInvestmentOverview();
+        }
+
+        // Update the investment overview section with totals
+        function updateInvestmentOverview() {
+            let investments = JSON.parse(localStorage.getItem('investments')) || {
+                stocks: 0,
+                mutualFunds: 0,
+                gold: 0,
+                crypto: 0
+            };
+
+            document.getElementById('totalStocks').textContent = "$" + investments.stocks.toFixed(2);
+            document.getElementById('totalMutualFunds').textContent = "$" + investments.mutualFunds.toFixed(2);
+            document.getElementById('totalGold').textContent = "$" + investments.gold.toFixed(2);
+            document.getElementById('totalCrypto').textContent = "$" + investments.crypto.toFixed(2);
+
+            // Calculate overall total investment
+            let overallTotal = investments.stocks + investments.mutualFunds + investments.gold + investments.crypto;
+            document.getElementById('overallTotal').textContent = overallTotal.toFixed(2);
+        }
+
+        // Logout function to clear the login status
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            window.location.href = "index.html";  // Redirect to login page
+        }
+
+        // Functions to handle adding investments (with input prompts for now)
+        function addStock() {
+            let amount = prompt("Enter the amount for your Stock investment:");
+            if (amount) {
+                addInvestment("stocks", amount);
             }
+        }
 
-            // Create a new table row
-            const table = document.getElementById("investmentTable").querySelector("tbody");
-            const row = document.createElement("tr");
+        function addMutualFund() {
+            let amount = prompt("Enter the amount for your Mutual Fund investment:");
+            if (amount) {
+                addInvestment("mutualFunds", amount);
+            }
+        }
 
-            // Add cells to the row
-            row.innerHTML = `
-                <td>${stock}</td>
-                <td>${mutualFund}</td>
-                <td>${gold}</td>
-                <td>${crypto}</td>
-            `;
+        function addGold() {
+            let amount = prompt("Enter the amount for your Gold investment:");
+            if (amount) {
+                addInvestment("gold", amount);
+            }
+        }
 
-            // Append the row to the table
-            table.appendChild(row);
+        function addCrypto() {
+            let amount = prompt("Enter the amount for your Cryptocurrency investment:");
+            if (amount) {
+                addInvestment("crypto", amount);
+            }
+        }
 
-            // Clear form fields
-            document.getElementById("investmentForm").reset();
+        // On page load, update the investment overview with the saved data
+        window.onload = function() {
+            updateInvestmentOverview();
         }
     </script>
 </body>
