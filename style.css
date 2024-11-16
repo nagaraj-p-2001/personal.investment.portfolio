@@ -17,7 +17,8 @@ body {
 }
 
 .login-container {
-    width: 300px;
+    max-width: 300px;
+    margin: auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
