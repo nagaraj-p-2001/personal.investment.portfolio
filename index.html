@@ -8,39 +8,50 @@
 </head>
 <body>
     <div class="login-container">
-        <h1>Welcome</h1>
+<h1>Welcome</h1>
         <h2>Login</h2>
         <form id="loginForm">
             <label for="username">Username:</label>
             <input type="text" id="username" placeholder="Enter your username" required>
-
+        
             <label for="password">Password:</label>
             <input type="password" id="password" placeholder="Enter your password" required>
-
-            <button type="button" onclick="login()">Login</button>
+        
+            <button type="submit">Login</button>
         </form>
         <p id="loginMessage"></p>
+        
     </div>
 
+
+
     <script>
-        function login() {
+        // Attach the event listener for form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent form from submitting normally
+    
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
-
+    
             // Simple credentials check for demonstration
             if (username === "8" && password === "69") {
+                // Set the authentication flag in localStorage
+                localStorage.setItem('isLoggedIn', 'true');
+    
+                // Display success message and redirect
                 document.getElementById("loginMessage").textContent = "Login successful!";
                 document.getElementById("loginMessage").style.color = "green";
-
-                // Redirect to main page
+    
                 setTimeout(() => {
-                    window.location.href = "main.html";
+                    window.location.href = "main.html"; // Redirect to the main page
                 }, 1000);
             } else {
+                // Display error message
                 document.getElementById("loginMessage").textContent = "Invalid credentials!";
                 document.getElementById("loginMessage").style.color = "red";
             }
-        }
+        });
     </script>
+    
 </body>
 </html>
