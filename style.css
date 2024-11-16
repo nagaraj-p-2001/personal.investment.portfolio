@@ -74,6 +74,23 @@ iframe {
     border-radius: 10px; /* Optional styling */
 }
 
+.responsive-iframe-wrapper {
+    width: 100%; /* Full width of the device */
+    height: 55vh; /* Full height of the viewport */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background-color: #f4f4f9; /* Optional background color */
+    box-sizing: border-box; /* Include padding in size calculation */
+    padding: 10px; /* Prevent content from touching the edges */
+}
+
+.responsive-iframe-wrapper iframe {
+    width: 100%; /* Make iframe responsive to container's width */
+    height: 100%; /* Make iframe responsive to container's height */
+    border-radius: 10px; /* Optional rounded corners */
+    border: 1px solid #ccc; /* Optional border */
+}
 
 
 
