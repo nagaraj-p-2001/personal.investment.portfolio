@@ -35,6 +35,19 @@ body {
     margin-bottom: 30px;
 }
 
+.iframe-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: #f4f4f9; /* Optional background for better visuals */
+}
+
+iframe {
+    border-radius: 10px; /* Optional styling */
+}
+
+
 .overview-item {
     max-width: 600px;
     margin: auto;
