@@ -23,38 +23,72 @@
     </script>
     
 
-    <div class="container">
-        <h1>Investment Manager</h1>
-        <form id="investmentForm">
-            <label for="stock">Stock Name:</label>
-            <input type="text" id="stock" name="stock" required>
+    <div class="main-container">
+        <header>
+            <h1>Welcome to Your Investment Dashboard</h1>
+        </header>
 
-            <label for="mutualFund">Mutual Fund Name:</label>
-            <input type="text" id="mutualFund" name="mutualFund" required>
+        <section class="investment-overview">
+            <h2>Your Overall Investment Summary</h2>
+            <div class="iframe-container">
+                <iframe width="600" height="371" seamless frameborder="1" scrolling="no" 
+                    src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSDKayJwHWinpP80S4ftpxRgI8cHnUMRqyA327wyKlZc5mcgoX3fPy_D9g2VvmygGF3TPjVwFZqE16D/pubchart?oid=1404587421&amp;format=interactive">
+                </iframe>
+            </div>
+            
+            <div class="overview-item">
+                <h3>Total Stock Investments</h3>
+                <p id="totalStocks">₹0</p>
+            </div>
+            <div class="overview-item">
+                <h3>Total Mutual Fund Investments</h3>
+                <p id="totalMutualFunds">₹0</p>
+            </div>
+            <div class="overview-item">
+                <h3>Total Gold Investments</h3>
+                <p id="totalGold">₹0</p>
+            </div>
+            <div class="overview-item">
+                <h3>Total Cryptocurrency Investments</h3>
+                <p id="totalCrypto">₹0</p>
+            </div>
 
-            <label for="gold">Gold (grams):</label>
-            <input type="number" id="gold" name="gold" required>
+            <h3>Overall Total Investment: ₹<span id="overallTotal">₹0</span></h3>
+        </section>
 
-            <label for="crypto">Cryptocurrency Name:</label>
-            <input type="text" id="crypto" name="crypto" required>
+        <section class="investment-section">
+            <h2>Your Investment Categories</h2>
 
-            <button type="button" onclick="addData()">Add Investment</button>
-        </form>
+            <!-- Stock Management Section -->
+            <div class="investment-category">
+                <h3>Stocks</h3>
+                <p>Track your stock investments.</p>
+                <button onclick="addStock()">Add Stock Investment</button>
+            </div>
 
-        <table id="investmentTable">
-            <thead>
-                <tr>
-                    <th>Stock</th>
-                    <th>Mutual Fund</th>
-                    <th>Gold (grams)</th>
-                    <th>Cryptocurrency</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Data will be displayed here -->
-            </tbody>
-        </table>
+            <!-- Mutual Fund Management Section -->
+            <div class="investment-category">
+                <h3>Mutual Funds</h3>
+                <p>Track your mutual fund investments.</p>
+                <button onclick="addMutualFund()">Add Mutual Fund Investment</button>
+            </div>
+
+            <!-- Gold Management Section -->
+            <div class="investment-category">
+                <h3>Gold</h3>
+                <p>Track your gold investments.</p>
+                <button onclick="addGold()">Add Gold Investment</button>
+            </div>
+
+            <!-- Cryptocurrency Management Section -->
+            <div class="investment-category">
+                <h3>Cryptocurrency</h3>
+                <p>Track your cryptocurrency investments.</p>
+                <button onclick="addCrypto()">Add Crypto Investment</button>
+            </div>
+        </section>
     </div>
+
 
     <script>
         function addData() {
