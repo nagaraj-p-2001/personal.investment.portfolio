@@ -3,74 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investment Manager</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to the CSS file -->
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Investment Manager</h1>
-        <form id="investmentForm">
-            <label for="stock">Stock Name:</label>
-            <input type="text" id="stock" name="stock" required>
+    <div class="login-container">
+        <h1>Welcome</h1>
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter your username" required>
 
-            <label for="mutualFund">Mutual Fund Name:</label>
-            <input type="text" id="mutualFund" name="mutualFund" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter your password" required>
 
-            <label for="gold">Gold (grams):</label>
-            <input type="number" id="gold" name="gold" required>
-
-            <label for="crypto">Cryptocurrency Name:</label>
-            <input type="text" id="crypto" name="crypto" required>
-
-            <button type="button" onclick="addData()">Add Investment</button>
+            <button type="button" onclick="login()">Login</button>
         </form>
-
-        <table id="investmentTable">
-            <thead>
-                <tr>
-                    <th>Stock</th>
-                    <th>Mutual Fund</th>
-                    <th>Gold (grams)</th>
-                    <th>Cryptocurrency</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Data will be displayed here -->
-            </tbody>
-        </table>
+        <p id="loginMessage"></p>
     </div>
 
     <script>
-        function addData() {
-            // Get input values
-            const stock = document.getElementById("stock").value;
-            const mutualFund = document.getElementById("mutualFund").value;
-            const gold = document.getElementById("gold").value;
-            const crypto = document.getElementById("crypto").value;
+        function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
 
-            // Validate inputs
-            if (!stock || !mutualFund || !gold || !crypto) {
-                alert("Please fill in all fields.");
-                return;
+            // Simple credentials check for demonstration
+            if (username === "8" && password === "69") {
+                document.getElementById("loginMessage").textContent = "Login successful!";
+                document.getElementById("loginMessage").style.color = "green";
+
+                // Redirect to main page
+                setTimeout(() => {
+                    window.location.href = "main.html";
+                }, 1000);
+            } else {
+                document.getElementById("loginMessage").textContent = "Invalid credentials!";
+                document.getElementById("loginMessage").style.color = "red";
             }
-
-            // Create a new table row
-            const table = document.getElementById("investmentTable").querySelector("tbody");
-            const row = document.createElement("tr");
-
-            // Add cells to the row
-            row.innerHTML = `
-                <td>${stock}</td>
-                <td>${mutualFund}</td>
-                <td>${gold}</td>
-                <td>${crypto}</td>
-            `;
-
-            // Append the row to the table
-            table.appendChild(row);
-
-            // Clear form fields
-            document.getElementById("investmentForm").reset();
         }
     </script>
 </body>
