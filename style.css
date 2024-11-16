@@ -47,7 +47,7 @@ iframe:focus {
   }
   
   iframe[seamless] {
-    display: block;
+    display: flex;
   }
 
 .responsive-iframe-container {
